@@ -59,6 +59,6 @@ print_matrix(matrix)
 
 for i in range(13,-1,-1):
     for g in range(len(matrix[i])):
-        matrix[i][g] += matrix[i+1][g] + matrix[i+1][g+1]
+        matrix[i][g] += max(matrix[i+1][g], matrix[i+1][g+1])
 
 print_matrix(matrix)
