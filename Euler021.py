@@ -24,7 +24,7 @@ def sum_of_divisors(n):
     return total
     
 total = 0
-for i in range(10000):
+for i in range(10000): 
     return_val = amicable(i)
     if type(return_val)==int:
         if i!=return_val:
