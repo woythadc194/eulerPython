@@ -8,33 +8,28 @@ As 12 is the smallest abundant number, 1 + 2 + 3 + 4 + 6 = 16, the smallest numb
 Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
 """
 import time
+from math import sqrt
 begin = time.time()
 
-def sum_of_divisors(n):
-    total = 0
-    for i in xrange(1, n):
-        if n%i==0:
-            total += i
-    if n==1:
-        total = 1
-    return total
-
-total_sum = 0
+def is_abund(n):
+    total = 1                           #start with total==1 and....
+    for i in xrange(2, int(sqrt(n)+1)): #range at 2 so we dont add n to total...
+        if n%i==0:      
+            total += i+n/i              # ...here when n==1
+            if n/i==i:
+                total -= i
+    return total>n  
 
 abundant = []                   #List of abundant numbers
-for n in xrange(28123):          #test every number in xrange specified by problem
-    x = sum_of_divisors(n)      
-    if x>n:                     #if sum_of_divisors > n 
+for n in xrange(12,28123+1):    #test every number in range specified by problem
+    if is_abund(n):             #if sum_of_divisors > n 
         abundant.append(n)          #append n to abundant
-    target = True               #bool for if n is a sum of two abundant numbers
-    for a in abundant:          #test every num in abundant list
-        b = n-a
-        if b in abundant:       #if n-abundant_num == another_abundant_num
-            target = False          #number is not target (we want n!=abund+abund)
-            break                   #we already know number isnt target so break
-    if target:
-        total_sum += n
-            
-print "A:",total_sum
-print "T:",time.time()-begin    
 
+sums = []
+for a in abundant:              #test every num in abundant list
+    for b in abundant:          #test every num in abundant list
+        if a+b < 28123+1:       
+            sums.append(a+b)        #add sum of a and b to Sums(of abundant number)
+ 
+print "A:", sum(set(xrange(28123+1)) - set(sums))
+print "T:",time.time()-begin    
