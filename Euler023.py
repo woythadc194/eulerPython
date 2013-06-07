@@ -12,7 +12,7 @@ begin = time.time()
 
 def sum_of_divisors(n):
     total = 0
-    for i in range(1, n):
+    for i in xrange(1, n):
         if n%i==0:
             total += i
     if n==1:
@@ -22,7 +22,7 @@ def sum_of_divisors(n):
 total_sum = 0
 
 abundant = []                   #List of abundant numbers
-for n in range(28123):          #test every number in range specified by problem
+for n in xrange(28123):          #test every number in xrange specified by problem
     x = sum_of_divisors(n)      
     if x>n:                     #if sum_of_divisors > n 
         abundant.append(n)          #append n to abundant
