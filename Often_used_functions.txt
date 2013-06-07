@@ -1,0 +1,30 @@
+"""
+is_prime
+"""
+from math import ceil
+from math import sqrt
+def is_prime(n):
+    if n==1:
+        return False
+    if n==2:
+        return True
+    for i in range(2, int(ceil(sqrt(n)))+1):
+        if n%i==0:
+            return False
+    return True
+   
+"""
+print_matrix
+"""
+def print_matrix(martix):
+    for x in range(len(matrix[0])):
+        for y in range(len(matrix)):
+            print matrix[x][y],
+        print '\n'
+
+
+"""
+pandigital
+"""
+
+
