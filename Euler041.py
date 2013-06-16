@@ -18,7 +18,7 @@ def is_prime(n):
             return False
     return True
 
-n = 9
+n = 7       #all permutations of 123456789 and 12345678 are divisible by 3
 largest = 0
 found = False
 while not found:
